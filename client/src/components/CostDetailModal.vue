@@ -4,7 +4,7 @@
       <div v-if="isOpen && costData" class="modal-overlay" @click="close">
         <div class="modal-container max-w-[600px]" @click.stop>
           <div class="modal-header">
-            <h3 class="modal-title">{{ costData.month }} Cost Breakdown</h3>
+            <h3 class="modal-title">{{ costData.month }} {{ t('costModal.titleSuffix') }}</h3>
             <button class="close-button" @click="close">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -15,7 +15,7 @@
           <div class="modal-body">
             <div class="mb-8">
               <div class="p-6 rounded-xl text-center bg-gradient-to-br from-accent to-indigo-700 text-white">
-                <div class="text-sm font-semibold uppercase tracking-wider opacity-90 mb-2">Total Costs</div>
+                <div class="text-sm font-semibold uppercase tracking-wider opacity-90 mb-2">{{ t('costModal.totalCosts') }}</div>
                 <div class="text-[2.25rem] font-bold">{{ currencySymbol }}{{ totalCosts.toLocaleString() }}</div>
               </div>
             </div>
@@ -30,11 +30,11 @@
                     </svg>
                   </div>
                   <div class="flex-1">
-                    <div class="font-semibold text-text-primary text-base mb-1">Procurement</div>
+                    <div class="font-semibold text-text-primary text-base mb-1">{{ t('costModal.procurement') }}</div>
                     <div class="text-2xl font-bold text-text-primary">{{ currencySymbol }}{{ costData.procurement.toLocaleString() }}</div>
                   </div>
                 </div>
-                <div class="text-sm text-text-muted font-medium">{{ getProcurementPercentage() }}% of total</div>
+                <div class="text-sm text-text-muted font-medium">{{ getProcurementPercentage() }}{{ t('costModal.ofTotal') }}</div>
               </div>
 
               <div class="p-5 rounded-xl border-2 border-violet-400/30 bg-violet-900/20">
@@ -46,11 +46,11 @@
                     </svg>
                   </div>
                   <div class="flex-1">
-                    <div class="font-semibold text-text-primary text-base mb-1">Operational</div>
+                    <div class="font-semibold text-text-primary text-base mb-1">{{ t('costModal.operational') }}</div>
                     <div class="text-2xl font-bold text-text-primary">{{ currencySymbol }}{{ costData.operational.toLocaleString() }}</div>
                   </div>
                 </div>
-                <div class="text-sm text-text-muted font-medium">{{ getOperationalPercentage() }}% of total</div>
+                <div class="text-sm text-text-muted font-medium">{{ getOperationalPercentage() }}{{ t('costModal.ofTotal') }}</div>
               </div>
 
               <div class="p-5 rounded-xl border-2 border-cyan-400/30 bg-cyan-900/20">
@@ -62,11 +62,11 @@
                     </svg>
                   </div>
                   <div class="flex-1">
-                    <div class="font-semibold text-text-primary text-base mb-1">Labor</div>
+                    <div class="font-semibold text-text-primary text-base mb-1">{{ t('costModal.labor') }}</div>
                     <div class="text-2xl font-bold text-text-primary">{{ currencySymbol }}{{ costData.labor.toLocaleString() }}</div>
                   </div>
                 </div>
-                <div class="text-sm text-text-muted font-medium">{{ getLaborPercentage() }}% of total</div>
+                <div class="text-sm text-text-muted font-medium">{{ getLaborPercentage() }}{{ t('costModal.ofTotal') }}</div>
               </div>
 
               <div class="p-5 rounded-xl border-2 border-amber-400/30 bg-amber-900/20">
@@ -77,17 +77,17 @@
                     </svg>
                   </div>
                   <div class="flex-1">
-                    <div class="font-semibold text-text-primary text-base mb-1">Overhead</div>
+                    <div class="font-semibold text-text-primary text-base mb-1">{{ t('costModal.overhead') }}</div>
                     <div class="text-2xl font-bold text-text-primary">{{ currencySymbol }}{{ costData.overhead.toLocaleString() }}</div>
                   </div>
                 </div>
-                <div class="text-sm text-text-muted font-medium">{{ getOverheadPercentage() }}% of total</div>
+                <div class="text-sm text-text-muted font-medium">{{ getOverheadPercentage() }}{{ t('costModal.ofTotal') }}</div>
               </div>
             </div>
           </div>
 
           <div class="modal-footer">
-            <button class="btn-secondary" @click="close">Close</button>
+            <button class="btn-secondary" @click="close">{{ t('common.close') }}</button>
           </div>
         </div>
       </div>
@@ -99,7 +99,7 @@
 import { computed } from 'vue'
 import { useI18n } from '../composables/useI18n'
 
-const { currentCurrency } = useI18n()
+const { t, currentCurrency } = useI18n()
 
 const currencySymbol = computed(() => {
   return currentCurrency.value === 'JPY' ? '¥' : '$'

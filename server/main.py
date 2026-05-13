@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Optional
 from pydantic import BaseModel
 from mock_data import inventory_items, orders, demand_forecasts, backlog_items, spending_summary, monthly_spending, category_spending, recent_transactions, purchase_orders
+from i18n import t
 
 app = FastAPI(title="Factory Inventory Management System")
 
@@ -52,7 +53,7 @@ app.add_middleware(
     allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"],
+    allow_headers=["*", "Accept-Language"],
 )
 
 # Data models
@@ -134,11 +135,11 @@ def get_inventory(
     return apply_filters(inventory_items, warehouse, category)
 
 @app.get("/api/inventory/{item_id}", response_model=InventoryItem)
-def get_inventory_item(item_id: str):
+def get_inventory_item(item_id: str, lang: str = "en"):
     """Get a specific inventory item"""
     item = next((item for item in inventory_items if item["id"] == item_id), None)
     if not item:
-        raise HTTPException(status_code=404, detail="Item not found")
+        raise HTTPException(status_code=404, detail=t("errors.item_not_found", lang))
     return item
 
 @app.get("/api/orders", response_model=List[Order])
@@ -154,11 +155,11 @@ def get_orders(
     return filtered_orders
 
 @app.get("/api/orders/{order_id}", response_model=Order)
-def get_order(order_id: str):
+def get_order(order_id: str, lang: str = "en"):
     """Get a specific order"""
     order = next((order for order in orders if order["id"] == order_id), None)
     if not order:
-        raise HTTPException(status_code=404, detail="Order not found")
+        raise HTTPException(status_code=404, detail=t("errors.order_not_found", lang))
     return order
 
 @app.get("/api/demand", response_model=List[DemandForecast])
@@ -303,6 +304,11 @@ def get_monthly_trends():
     result = list(months.values())
     result.sort(key=lambda x: x['month'])
     return result
+
+@app.get("/api/tasks")
+def get_tasks():
+    """Tasks are managed client-side; endpoint exists to prevent 404s."""
+    return []
 
 if __name__ == "__main__":
     import uvicorn

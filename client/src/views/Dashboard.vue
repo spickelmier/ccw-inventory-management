@@ -175,7 +175,7 @@
                   <th>{{ t('dashboard.inventoryShortages.shortage') }}</th>
                   <th>{{ t('dashboard.inventoryShortages.daysDelayed') }}</th>
                   <th>{{ t('dashboard.inventoryShortages.priority') }}</th>
-                  <th>Actions</th>
+                  <th>{{ t('dashboard.actions.actions') }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -210,14 +210,14 @@
                       @click.stop="openPOModal(item)"
                       class="px-4 py-2 border-none rounded-md text-sm font-semibold cursor-pointer bg-accent text-white hover:bg-accent-hover transition-all whitespace-nowrap"
                     >
-                      Create PO
+                      {{ t('dashboard.actions.createPO') }}
                     </button>
                     <button
                       v-else
                       @click.stop="viewPO(item)"
                       class="px-4 py-2 border-none rounded-md text-sm font-semibold cursor-pointer bg-surface-overlay text-text-secondary hover:bg-slate-600 transition-all whitespace-nowrap"
                     >
-                      View PO
+                      {{ t('dashboard.actions.viewPO') }}
                     </button>
                   </td>
                 </tr>
@@ -571,7 +571,7 @@ export default {
         inventoryItems.value = inventoryData
         allBacklogItems.value = backlogData
       } catch (err) {
-        error.value = 'Failed to load dashboard data: ' + err.message
+        error.value = t('common.error') + ': ' + err.message
       } finally {
         loading.value = false
       }

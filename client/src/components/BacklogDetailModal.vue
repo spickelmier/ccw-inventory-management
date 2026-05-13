@@ -4,7 +4,7 @@
       <div v-if="isOpen && backlogItem" class="modal-overlay" @click="close">
         <div class="modal-container max-w-[700px]" @click.stop>
           <div class="modal-header">
-            <h3 class="modal-title">Inventory Shortage Details</h3>
+            <h3 class="modal-title">{{ t('backlogModal.title') }}</h3>
             <button class="close-button" @click="close">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -25,58 +25,58 @@
                 <div class="text-sm text-text-muted font-mono">SKU: {{ backlogItem.item_sku }}</div>
               </div>
               <span class="badge shrink-0" :class="backlogItem.priority">
-                {{ backlogItem.priority }} Priority
+                {{ backlogItem.priority }} {{ t('backlogModal.priority') }}
               </span>
             </div>
 
             <div class="grid grid-cols-2 gap-4 mb-8">
               <div class="p-5 rounded-xl border-2 border-red-800 bg-red-900/20">
-                <div class="text-[0.813rem] font-semibold uppercase tracking-wider text-text-muted mb-2">Shortage Amount</div>
-                <div class="text-[1.875rem] font-bold text-status-danger">{{ shortage }} units</div>
+                <div class="text-[0.813rem] font-semibold uppercase tracking-wider text-text-muted mb-2">{{ t('backlogModal.shortageAmount') }}</div>
+                <div class="text-[1.875rem] font-bold text-status-danger">{{ shortage }} {{ t('backlogModal.units') }}</div>
               </div>
               <div class="p-5 rounded-xl border-2 border-amber-700 bg-amber-900/20">
-                <div class="text-[0.813rem] font-semibold uppercase tracking-wider text-text-muted mb-2">Days Delayed</div>
-                <div class="text-[1.875rem] font-bold text-status-warning">{{ backlogItem.days_delayed }} days</div>
+                <div class="text-[0.813rem] font-semibold uppercase tracking-wider text-text-muted mb-2">{{ t('backlogModal.daysDelayed') }}</div>
+                <div class="text-[1.875rem] font-bold text-status-warning">{{ backlogItem.days_delayed }} {{ t('backlogModal.days') }}</div>
               </div>
             </div>
 
             <div class="info-grid">
               <div class="info-item">
-                <div class="info-label">Order ID</div>
+                <div class="info-label">{{ t('backlogModal.orderId') }}</div>
                 <div class="info-value font-mono text-accent">{{ backlogItem.order_id }}</div>
               </div>
 
               <div class="info-item">
-                <div class="info-label">Item SKU</div>
+                <div class="info-label">{{ t('backlogModal.itemSku') }}</div>
                 <div class="info-value font-mono text-accent">{{ backlogItem.item_sku }}</div>
               </div>
 
               <div class="info-item">
-                <div class="info-label">Quantity Needed</div>
-                <div class="info-value">{{ backlogItem.quantity_needed }} units</div>
+                <div class="info-label">{{ t('backlogModal.quantityNeeded') }}</div>
+                <div class="info-value">{{ backlogItem.quantity_needed }} {{ t('backlogModal.units') }}</div>
               </div>
 
               <div class="info-item">
-                <div class="info-label">Quantity Available</div>
-                <div class="info-value">{{ backlogItem.quantity_available }} units</div>
+                <div class="info-label">{{ t('backlogModal.quantityAvailable') }}</div>
+                <div class="info-value">{{ backlogItem.quantity_available }} {{ t('backlogModal.units') }}</div>
               </div>
 
               <div class="info-item">
-                <div class="info-label">Expected Date</div>
+                <div class="info-label">{{ t('backlogModal.expectedDate') }}</div>
                 <div class="info-value">{{ formatDate(backlogItem.expected_date) }}</div>
               </div>
 
               <div class="info-item">
-                <div class="info-label">Status</div>
+                <div class="info-label">{{ t('backlogModal.status') }}</div>
                 <div class="info-value">
-                  <span class="badge danger">Backordered</span>
+                  <span class="badge danger">{{ t('status.backordered') }}</span>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="modal-footer">
-            <button class="btn-secondary" @click="close">Close</button>
+            <button class="btn-secondary" @click="close">{{ t('common.close') }}</button>
           </div>
         </div>
       </div>
@@ -88,7 +88,7 @@
 import { computed } from 'vue'
 import { useI18n } from '../composables/useI18n'
 
-const { translateProductName } = useI18n()
+const { t, translateProductName } = useI18n()
 
 const props = defineProps({
   isOpen: {

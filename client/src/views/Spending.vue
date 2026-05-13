@@ -364,7 +364,7 @@ export default {
         allTransactions.value = transactionsRes
         allOrders.value = ordersRes
       } catch (err) {
-        error.value = 'Failed to load financial data: ' + err.message
+        error.value = t('common.error') + ': ' + err.message
       } finally {
         loading.value = false
       }
