@@ -69,6 +69,11 @@ export default {
       firstOrder: 'First Order',
       inStock: 'In Stock',
       lowStock: 'Low Stock'
+    },
+    actions: {
+      createPO: 'Create PO',
+      viewPO: 'View PO',
+      actions: 'Actions'
     }
   },
 
@@ -195,7 +200,8 @@ export default {
     category: 'Category',
     orderStatus: 'Order Status',
     all: 'All',
-    allMonths: 'All Months'
+    allMonths: 'All Months',
+    resetFilters: 'Reset all filters'
   },
 
   // Statuses
@@ -291,6 +297,96 @@ export default {
     joinDate: 'Join Date',
     employeeId: 'Employee ID',
     close: 'Close'
+  },
+
+  // Reports
+  reports: {
+    title: 'Performance Reports',
+    description: 'View quarterly performance metrics and monthly trends',
+    loading: 'Loading reports...',
+    quarterly: {
+      title: 'Quarterly Performance',
+      quarter: 'Quarter',
+      totalOrders: 'Total Orders',
+      totalRevenue: 'Total Revenue',
+      avgOrderValue: 'Avg Order Value',
+      fulfillmentRate: 'Fulfillment Rate'
+    },
+    monthlyTrend: {
+      title: 'Monthly Revenue Trend'
+    },
+    momAnalysis: {
+      title: 'Month-over-Month Analysis',
+      month: 'Month',
+      orders: 'Orders',
+      revenue: 'Revenue',
+      change: 'Change',
+      growthRate: 'Growth Rate'
+    },
+    stats: {
+      totalRevenueYTD: 'Total Revenue (YTD)',
+      avgMonthlyRevenue: 'Avg Monthly Revenue',
+      totalOrdersYTD: 'Total Orders (YTD)',
+      bestQuarter: 'Best Performing Quarter'
+    }
+  },
+
+  // Backlog / Inventory Shortage Modal
+  backlogModal: {
+    title: 'Inventory Shortage Details',
+    shortageAmount: 'Shortage Amount',
+    daysDelayed: 'Days Delayed',
+    orderId: 'Order ID',
+    itemSku: 'Item SKU',
+    quantityNeeded: 'Quantity Needed',
+    quantityAvailable: 'Quantity Available',
+    expectedDate: 'Expected Date',
+    status: 'Status',
+    units: 'units',
+    days: 'days',
+    priority: 'Priority'
+  },
+
+  // Product Detail Modal
+  productModal: {
+    title: 'Product Details',
+    category: 'Category',
+    warehouse: 'Warehouse',
+    unitsOrdered: 'Units Ordered',
+    totalRevenue: 'Total Revenue',
+    currentStock: 'Current Stock',
+    reorderPoint: 'Reorder Point',
+    firstOrderDate: 'First Order Date',
+    stockStatus: 'Stock Status',
+    units: 'units'
+  },
+
+  // Inventory Detail Modal
+  inventoryModal: {
+    title: 'Inventory Item Details',
+    quantityOnHand: 'Quantity on Hand',
+    stockLevel: 'Stock Level',
+    vsReorderPoint: 'vs. reorder point',
+    category: 'Category',
+    location: 'Location',
+    reorderPoint: 'Reorder Point',
+    unitsRemaining: 'Units Remaining',
+    unitCost: 'Unit Cost',
+    totalValue: 'Total Value',
+    warehouse: 'Warehouse',
+    status: 'Status',
+    units: 'units'
+  },
+
+  // Cost Detail Modal
+  costModal: {
+    titleSuffix: 'Cost Breakdown',
+    totalCosts: 'Total Costs',
+    procurement: 'Procurement',
+    operational: 'Operational',
+    labor: 'Labor',
+    overhead: 'Overhead',
+    ofTotal: '% of total'
   },
 
   // Tasks Modal

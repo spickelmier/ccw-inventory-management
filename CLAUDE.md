@@ -31,13 +31,14 @@ Use the Task tool with these specialized subagents for appropriate tasks:
 ## Quick Start
 
 ```bash
-# Backend
-cd server
-uv run python main.py
+# Both servers (recommended)
+./scripts/start.sh
 
-# Frontend
-cd client
-npm install && npm run dev
+# Backend only
+cd server && uv run python main.py
+
+# Frontend only
+cd client && npm install && npm run dev
 ```
 
 ## Key Patterns

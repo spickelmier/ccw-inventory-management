@@ -69,6 +69,11 @@ export default {
       firstOrder: '初回注文',
       inStock: '在庫あり',
       lowStock: '在庫僅少'
+    },
+    actions: {
+      createPO: '発注書作成',
+      viewPO: '発注書を見る',
+      actions: 'アクション'
     }
   },
 
@@ -195,7 +200,8 @@ export default {
     category: 'カテゴリ',
     orderStatus: '注文ステータス',
     all: 'すべて',
-    allMonths: 'すべての月'
+    allMonths: 'すべての月',
+    resetFilters: 'フィルターをリセット'
   },
 
   // Statuses
@@ -291,6 +297,96 @@ export default {
     joinDate: '入社日',
     employeeId: '社員ID',
     close: '閉じる'
+  },
+
+  // Reports
+  reports: {
+    title: 'パフォーマンスレポート',
+    description: '四半期パフォーマンス指標と月次トレンドの確認',
+    loading: 'レポートを読み込み中...',
+    quarterly: {
+      title: '四半期パフォーマンス',
+      quarter: '四半期',
+      totalOrders: '総注文数',
+      totalRevenue: '総収益',
+      avgOrderValue: '平均注文額',
+      fulfillmentRate: '充足率'
+    },
+    monthlyTrend: {
+      title: '月次収益トレンド'
+    },
+    momAnalysis: {
+      title: '前月比分析',
+      month: '月',
+      orders: '注文数',
+      revenue: '収益',
+      change: '変化',
+      growthRate: '成長率'
+    },
+    stats: {
+      totalRevenueYTD: '総収益（年初来）',
+      avgMonthlyRevenue: '月平均収益',
+      totalOrdersYTD: '総注文数（年初来）',
+      bestQuarter: '最高パフォーマンス四半期'
+    }
+  },
+
+  // Backlog / Inventory Shortage Modal
+  backlogModal: {
+    title: '在庫不足の詳細',
+    shortageAmount: '不足量',
+    daysDelayed: '遅延日数',
+    orderId: '注文ID',
+    itemSku: '品目SKU',
+    quantityNeeded: '必要数量',
+    quantityAvailable: '在庫数量',
+    expectedDate: '予定日',
+    status: 'ステータス',
+    units: '単位',
+    days: '日',
+    priority: '優先度'
+  },
+
+  // Product Detail Modal
+  productModal: {
+    title: '製品詳細',
+    category: 'カテゴリ',
+    warehouse: '倉庫',
+    unitsOrdered: '注文数量',
+    totalRevenue: '総収益',
+    currentStock: '現在の在庫',
+    reorderPoint: '再注文点',
+    firstOrderDate: '初回注文日',
+    stockStatus: '在庫状況',
+    units: '単位'
+  },
+
+  // Inventory Detail Modal
+  inventoryModal: {
+    title: '在庫品目の詳細',
+    quantityOnHand: '手持在庫数',
+    stockLevel: '在庫レベル',
+    vsReorderPoint: '再注文点との比較',
+    category: 'カテゴリ',
+    location: '場所',
+    reorderPoint: '再注文点',
+    unitsRemaining: '残余数量',
+    unitCost: '単価',
+    totalValue: '総価値',
+    warehouse: '倉庫',
+    status: 'ステータス',
+    units: '単位'
+  },
+
+  // Cost Detail Modal
+  costModal: {
+    titleSuffix: 'コスト内訳',
+    totalCosts: '総コスト',
+    procurement: '調達',
+    operational: '運営',
+    labor: '人件費',
+    overhead: '間接費',
+    ofTotal: '% の合計'
   },
 
   // Tasks Modal
